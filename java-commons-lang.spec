@@ -1,4 +1,5 @@
-Summary:	Jakarta Commons Lang
+Summary:	Jakarta Commons Lang - utility functions and components
+Summary(pl):	Jakarta Commons Lang - funkcje i komponenty narzêdziowe
 Name:		jakarta-commons-lang
 Version:	1.0.1
 Release:	0.1
@@ -15,10 +16,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_javalibdir	/usr/share/java
 
 %description
-Jakarta Commons Lang.
+Jakarta Commons Lang is a set of utility functions and reusable
+components that should be a help in any Java environment.
 
 %description -l pl
-Jakarta Commons Lang.
+Jakarta Commons Lang to zestaw funkcji narzêdziowych i komponentów
+wielokrotnego u¿ycia, które mog± byæ pomocne w ka¿dym ¶rodowisku Javy.
 
 %prep
 %setup -q -n commons-lang-%{version}-src
