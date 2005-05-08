@@ -1,0 +1,10 @@
+--- commons-lang-2.0-src/build.xml.orig	2003-08-23 07:27:30.000000000 +0200
++++ commons-lang-2.0-src/build.xml	2005-05-08 21:18:38.492076376 +0200
+@@ -73,6 +73,7 @@
+         <mkdir dir="${dist.home}/docs"/>
+         <mkdir dir="${dist.home}/docs/api"/>
+         <javadoc sourcepath="${source.home}"
++			 source="1.4"
+ 	        	 destdir="${dist.home}/docs/api"
+ 	        	 overview="${source.home}/org/apache/commons/lang/overview.html"
+ 	        	 packagenames="org.apache.commons.*"
