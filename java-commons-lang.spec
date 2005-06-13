@@ -1,13 +1,12 @@
 Summary:	Jakarta Commons Lang - utility functions and components
 Summary(pl):	Jakarta Commons Lang - funkcje i komponenty narzêdziowe
 Name:		jakarta-commons-lang
-Version:	2.0
+Version:	2.1
 Release:	1
 License:	Apache v1.1
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/lang/source/commons-lang-%{version}-src.tar.gz
-# Source0-md5:	200a40d46fe6a60af76acf973298b8fe
-Patch0:		%{name}-javadoc.patch
+# Source0-md5:	d8379e93f597b2ae6d1f7b4bb7e83fce
 URL:		http://jakarta.apache.org/commons/lang/
 BuildRequires:	jakarta-ant >= 1.5
 Requires:	jre
@@ -23,8 +22,7 @@ Jakarta Commons Lang to zestaw funkcji narzêdziowych i komponentów
 wielokrotnego u¿ycia, które mog± byæ pomocne w ka¿dym ¶rodowisku Javy.
 
 %prep
-%setup -q -n commons-lang-%{version}-src
-%patch0 -p1
+%setup -q -n commons-lang-%{version}
 
 %build
 ant dist
