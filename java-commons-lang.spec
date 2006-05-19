@@ -8,7 +8,7 @@ Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/commons/lang/source/commons-lang-%{version}-src.tar.gz
 # Source0-md5:	d8379e93f597b2ae6d1f7b4bb7e83fce
 URL:		http://jakarta.apache.org/commons/lang/
-BuildRequires:	jakarta-ant >= 1.5
+BuildRequires:	ant >= 1.5
 Requires:	jre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
