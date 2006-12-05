@@ -10,6 +10,8 @@ Source0:	http://www.apache.org/dist/jakarta/commons/lang/source/commons-lang-%{v
 URL:		http://jakarta.apache.org/commons/lang/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jaxp_parser_impl
+BuildRequires:	jpackage-utils
+BuildRequires:	rpmbuild(macros) >= 1.294
 Requires:	jre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
