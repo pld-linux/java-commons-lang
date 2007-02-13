@@ -1,5 +1,5 @@
 Summary:	Jakarta Commons Lang - utility functions and components
-Summary(pl.UTF-8):   Jakarta Commons Lang - funkcje i komponenty narzędziowe
+Summary(pl.UTF-8):	Jakarta Commons Lang - funkcje i komponenty narzędziowe
 Name:		jakarta-commons-lang
 Version:	2.1
 Release:	2
