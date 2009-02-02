@@ -4,7 +4,7 @@ Name:		java-commons-lang
 Version:	2.1
 Release:	2
 License:	Apache v1.1
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
 # Source0-md5:	d8379e93f597b2ae6d1f7b4bb7e83fce
 URL:		http://commons.apache.org/lang/
