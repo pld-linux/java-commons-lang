@@ -1,4 +1,6 @@
-%bcond_without	javadoc		# build apidocs
+#
+# Conditional build:
+%bcond_without	javadoc		# don't build apidocs
 #
 %define		srcname	commons-lang
 Summary:	Commons Lang - utility functions and components
@@ -21,8 +23,8 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Commons Lang is a set of utility functions and reusable
-components that should be a help in any Java environment.
+Commons Lang is a set of utility functions and reusable components
+that should be a help in any Java environment.
 
 %description -l pl.UTF-8
 Commons Lang to zestaw funkcji narzędziowych i komponentów
