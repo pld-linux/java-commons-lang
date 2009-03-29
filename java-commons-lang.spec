@@ -1,7 +1,14 @@
 #
 # Conditional build:
 %bcond_without	javadoc		# don't build apidocs
-#
+%bcond_with	java_sun	# build with java-sun
+
+%if "%{pld_release}" == "ti"
+%define	with_java_sun	1
+%endif
+
+%include	/usr/lib/rpm/macros.java
+
 %define		srcname	commons-lang
 Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
@@ -14,11 +21,13 @@ Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-
 # Source0-md5:	d8379e93f597b2ae6d1f7b4bb7e83fce
 URL:		http://commons.apache.org/lang/
 BuildRequires:	ant >= 1.5
-BuildRequires:	java-gcj-compat-devel
+%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jaxp_parser_impl
 BuildRequires:	jpackage-utils
 BuildRequires:	rpmbuild(macros) >= 1.294
 Obsoletes:	jakarta-commons-lang
+Provides:	jakarta-commons-lang
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,6 +44,7 @@ Summary:	Online manual for Commons Lang
 Summary(pl.UTF-8):	Dokumentacja online do Commons Lang
 Group:		Documentation
 Requires:	jpackage-utils
+Obsoletes:	jakarta-commons-lang-javadoc
 
 %description javadoc
 Documentation for Commons Lang.
@@ -49,12 +59,7 @@ Javadoc pour Commons Lang.
 %setup -q -n commons-lang-%{version}
 
 %build
-%ant -Dbuild.compiler=extJavac jar
-
-%if %{with javadoc}
-export SHELL=/bin/sh
-%ant javadoc
-%endif
+%ant jar %{?with_javadoc:javadoc}
 
 %install
 rm -rf $RPM_BUILD_ROOT
