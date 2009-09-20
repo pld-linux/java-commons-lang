@@ -4,7 +4,9 @@
 %bcond_with	java_sun	# build with java-sun
 
 %if "%{pld_release}" == "ti"
-%define	with_java_sun	1
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
 %endif
 
 %include	/usr/lib/rpm/macros.java
@@ -13,19 +15,21 @@
 Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
 Name:		java-commons-lang
-Version:	2.1
-Release:	4
+Version:	2.4
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
-# Source0-md5:	d8379e93f597b2ae6d1f7b4bb7e83fce
+# Source0-md5:	625ff5f2f968dd908bca43c9469d6e6b
 URL:		http://commons.apache.org/lang/
 BuildRequires:	ant >= 1.5
 %{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
 %{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jaxp_parser_impl
 BuildRequires:	jpackage-utils
-BuildRequires:	rpmbuild(macros) >= 1.294
+BuildRequires:	rpm >= 4.4.9-56
+BuildRequires:	rpm-javaprov
+BuildRequires:	rpmbuild(macros) >= 1.300
 Obsoletes:	jakarta-commons-lang
 Provides:	jakarta-commons-lang
 BuildArch:	noarch
@@ -56,10 +60,13 @@ Dokumentacja do Commons Lang.
 Javadoc pour Commons Lang.
 
 %prep
-%setup -q -n commons-lang-%{version}
+%setup -q -n commons-lang-%{version}-src
 
 %build
-%ant jar %{?with_javadoc:javadoc}
+
+%ant jar %{?with_javadoc:javadoc} \
+  -Dcompile.source=1.4 \
+  -Dcompile.target=1.4
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -83,7 +90,7 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE.txt PROPOSAL.html RELEASE-NOTES.txt STATUS.html
+%doc PROPOSAL.html RELEASE-NOTES.txt
 %{_javadir}/*.jar
 
 %if %{with javadoc}
