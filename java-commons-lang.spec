@@ -3,12 +3,6 @@
 %bcond_without	javadoc		# don't build apidocs
 %bcond_with	java_sun	# build with java-sun
 
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-
 %include	/usr/lib/rpm/macros.java
 
 %define		srcname	commons-lang
@@ -23,15 +17,13 @@ Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-
 # Source0-md5:	625ff5f2f968dd908bca43c9469d6e6b
 URL:		http://commons.apache.org/lang/
 BuildRequires:	ant >= 1.5
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires:	java-sun}
-BuildRequires:	jaxp_parser_impl
+BuildRequires:	java(jaxp_parser_impl)
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Obsoletes:	jakarta-commons-lang
 Provides:	jakarta-commons-lang
+Obsoletes:	jakarta-commons-lang
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
