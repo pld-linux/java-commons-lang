@@ -3,14 +3,13 @@
 %bcond_without	javadoc		# don't build apidocs
 %bcond_with	java_sun	# build with java-sun
 
-%include	/usr/lib/rpm/macros.java
-
 %define		srcname	commons-lang
+%include	/usr/lib/rpm/macros.java
 Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
 Name:		java-commons-lang
 Version:	2.4
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
@@ -22,7 +21,6 @@ BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Provides:	jakarta-commons-lang
 Obsoletes:	jakarta-commons-lang
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
