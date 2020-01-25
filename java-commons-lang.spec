@@ -4,7 +4,6 @@
 %bcond_with	java_sun	# build with java-sun
 
 %define		srcname	commons-lang
-%include	/usr/lib/rpm/macros.java
 Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
 Name:		java-commons-lang
