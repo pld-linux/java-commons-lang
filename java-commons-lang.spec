@@ -3,23 +3,25 @@
 %bcond_without	javadoc		# don't build apidocs
 %bcond_with	java_sun	# build with java-sun
 
+%{?use_default_jdk:%use_default_jdk 8}
+
 %define		srcname	commons-lang
 Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
 Name:		java-commons-lang
-Version:	2.4
-Release:	3
+Version:	2.6
+Release:	1
 License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
-# Source0-md5:	625ff5f2f968dd908bca43c9469d6e6b
+Source0:	https://archive.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
+# Source0-md5:	ff5023a7b7be3508492024faa41cfbbc
 URL:		http://commons.apache.org/lang/
 BuildRequires:	ant >= 1.5
 BuildRequires:	java(jaxp_parser_impl)
-BuildRequires:	jdk
+%buildrequires_jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.556
 Obsoletes:	jakarta-commons-lang
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -61,13 +63,13 @@ Javadoc pour Commons Lang.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}
 
-install dist/*.jar $RPM_BUILD_ROOT%{_javadir}
+cp -a target/%{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
 ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 
 # javadoc
 %if %{with javadoc}
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
-cp -a dist/docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a target/apidocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
 ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 %endif
 
