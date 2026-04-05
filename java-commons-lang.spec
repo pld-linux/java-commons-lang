@@ -10,11 +10,11 @@ Summary:	Commons Lang - utility functions and components
 Summary(pl.UTF-8):	Commons Lang - funkcje i komponenty narzędziowe
 Name:		java-commons-lang
 Version:	2.6
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	https://archive.apache.org/dist/commons/lang/source/commons-lang-%{version}-src.tar.gz
-# Source0-md5:	ff5023a7b7be3508492024faa41cfbbc
+# Source0-md5:	37ee469f4caff6cfa28f9d0a0be2d4d2
 URL:		http://commons.apache.org/lang/
 BuildRequires:	ant >= 1.5
 BuildRequires:	java(jaxp_parser_impl)
